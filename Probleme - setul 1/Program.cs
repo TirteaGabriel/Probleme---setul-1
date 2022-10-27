@@ -28,7 +28,7 @@ namespace Probleme___setul_1
             int c = int.Parse(t[2]);
             float delta = b * b - (4 * a * c);
             Console.WriteLine("delta="+delta);
-            if (delta > 0)
+            if (delta >= 0)
             {
                 double raddelta = Math.Sqrt(delta);
                 double x1 = (-b + raddelta) / (2 * a);
@@ -42,12 +42,6 @@ namespace Probleme___setul_1
                 double raddelta = Math.Sqrt(delta);
                 Console.WriteLine("x1=(" + -b + "+i" + raddelta + ")/" + 2 * a);
                 Console.WriteLine("x2=(" + -b + "-i" + raddelta + ")/" + 2 * a);
-            }
-            if(delta == 0)
-            {
-                double x12 = (-b) / (2 * a);
-                Console.Write("X1,2=" + x12);
-
             }
 
 
