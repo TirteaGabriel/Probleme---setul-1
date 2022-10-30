@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,20 @@ namespace Probleme___setul_1
                     return false;
             return true;
         }
+        static bool palindrom(int n)
+        {
+            int inv = 0;
+            int temp = n;
+            while (temp > 0)
+            {
+                inv = inv * 10 + temp % 10;
+                temp /= 10;
+            }
+            if (inv == n)
+                return true;
+            else
+                return false;
+        }
         //final subprograme
         //probleme
         static void p1()
@@ -43,7 +58,7 @@ namespace Probleme___setul_1
             int b = int.Parse(t[1]);
             int c = int.Parse(t[2]);
             float delta = b * b - (4 * a * c);
-            Console.WriteLine("delta="+delta);
+            Console.WriteLine("delta=" + delta);
             if (delta >= 0)
             {
                 double raddelta = Math.Sqrt(delta);
@@ -83,8 +98,8 @@ namespace Probleme___setul_1
             string[] t = Console.ReadLine().Split(' ');
             int n = int.Parse(t[0]);
             int k = int.Parse(t[1]);
-            int p=0;
-            for(int i = 0; i < k; i++)
+            int p = 0;
+            for (int i = 0; i < k; i++)
             {
                 p = n % 10;
                 n /= 10;
@@ -131,7 +146,7 @@ namespace Probleme___setul_1
         static void p9()
         {
             int n = int.Parse(Console.ReadLine());
-            for(int i = 1; i <= n; i++)
+            for (int i = 1; i <= n; i++)
             {
                 if (n % i == 0)
                     Console.Write(i + " ");
@@ -145,6 +160,213 @@ namespace Probleme___setul_1
             else
                 Console.WriteLine(n + " nu este numar prim");
 
+        }
+        static void p11()
+        {
+            int n = int.Parse(Console.ReadLine());
+            while (n > 0)
+            {
+                Console.Write(n % 10);
+                n = n / 10;
+            }
+        }
+        static void p12()
+        {
+            string[] t = Console.ReadLine().Split(' ');
+            int a = int.Parse(t[0]);
+            int b = int.Parse(t[1]);
+            int n = int.Parse(Console.ReadLine());
+            int s = 0;
+            for (int i = a; i <= b; i++)
+            {
+                if (i % n == 0)
+                    s++;
+            }
+            Console.WriteLine("Sunt " + s + " numere divizibile cu " + n + " in intervalul [" + a + "," + b + "]");
+        }
+        static void p13()
+        {
+            string[] t = Console.ReadLine().Split(' ');
+            int y1 = int.Parse(t[0]);
+            int y2 = int.Parse(t[1]);
+            int s = 0;
+            for(int i=y1; i <= y2; i++)
+                if (i % 4 == 0)
+                    s++;
+            Console.WriteLine("Sunt " + s + " ani bisecti intre anii " + y1 + " si " + y2);
+        }
+        static void p14()
+        {
+            int n = int.Parse(Console.ReadLine());
+            if (palindrom(n))
+                Console.WriteLine(n + " este palindrom");
+            else
+                Console.WriteLine(n + " nu este palindrom");
+        }
+        static void p15()
+        {
+            string[] t = Console.ReadLine().Split(' ');
+            int a = int.Parse(t[0]);
+            int b = int.Parse(t[1]);
+            int c = int.Parse(t[2]);
+            int aux = 0;
+            if(a > b)
+            {
+                aux = a;
+                a = b;
+                b = aux;
+            }
+            if (a > c)
+            {
+                aux = a;
+                a = c;
+                c = aux;
+            }
+            if (b > c)
+            {
+                aux = c;
+                c = b;
+                b = aux;
+            }
+            Console.WriteLine("Numerele in ordine crescatoare sunt: " + a + "," + b + "," + c);
+        }
+        static void p16()
+        {
+            string[] t = Console.ReadLine().Split(' ');
+            int a = int.Parse(t[0]);
+            int b = int.Parse(t[1]);
+            int c = int.Parse(t[2]);
+            int d = int.Parse(t[3]);
+            int e = int.Parse(t[4]);
+            int aux = 0;
+            if (a > b)
+            {
+                aux = a;
+                a = b;
+                b = aux;
+            }
+            if (a > c)
+            {
+                aux = a;
+                a = c;
+                c = aux;
+            }
+            if(a > d)
+            {
+                aux = a;
+                a = d;
+                d = aux;
+            }
+            if(a > e)
+            {
+                aux = a;
+                a = e;
+                e = aux;
+            }
+            if(b > c)
+            {
+                aux = b;
+                b = c;
+                c = aux;
+            }
+            if(b > d)
+            {
+                aux = b;
+                b = d;
+                d = aux;
+            }
+            if(b > e)
+            {
+                aux = b;
+                b = e;
+                e = aux;
+            }
+            if(c > d)
+            {
+                aux = c;
+                c = d;
+                d = aux;
+            }
+            if(c > e)
+            {
+                aux = c;
+                c = e;
+                e = aux;
+            }
+            if(d > e)
+            {
+                aux = d;
+                d = e;
+                e = aux;
+            }
+            Console.WriteLine("Numerele in ordine crescatoare sunt: " + a + "," + b + "," + c + "," + d + "," + e);
+        }
+        static void p17()
+        {
+            string[] t = Console.ReadLine().Split(' ');
+            int a = int.Parse(t[0]);
+            int b = int.Parse(t[1]);
+            int r = 0;
+            int a1 = a;
+            int b1 = b;
+            int cmmmc = 0;
+            while (b != 0)
+            {
+                r = a % b;
+                a = b;
+                b = r;
+            }
+            Console.WriteLine("Cel mai mare divizor comun este " + a);
+            cmmmc = (a1 * b1) / a;
+            Console.WriteLine("Cel mai mic multiplu comun este " + cmmmc);
+        }
+        static void p18()
+        {
+            int n = int.Parse(Console.ReadLine());
+            int d = 2;
+            int p = 0;
+            int ok = 0;
+            while(n != 1)
+            {
+                p = 0;
+                while(n % d == 0)
+                {
+                    n = n / d;
+                    p++;
+                }
+                if(p > 0 && ok == 1)
+                {
+                    Console.Write("+" + d + "^" + p);
+                }
+                if(p > 0 && ok == 0)
+                {
+                    Console.Write(d + "^" + p);
+                    ok = 1;
+                }
+                d++;
+            }
+        }
+        static void p19()
+        {
+            int n=int.Parse(Console.ReadLine());
+            int[] a = new int[10];
+            int temp = n;
+            int s = 0;
+            while (temp > 0)
+            {
+                int aux = temp % 10;
+                a[aux]++;
+                temp /= 10;
+            }
+            for(int i=0; i < 10; i++)
+            {
+                if (a[i] != 0)
+                    s++;
+            }
+            if (s == 2)
+                Console.WriteLine("Numarul " + n + " este format din doua cifre care se repeta");
+            else
+                Console.WriteLine("Numarul " + n + " nu este format din doua cifre care se repeta");
         }
         static void Main(string[] args)
         {
@@ -203,38 +425,47 @@ namespace Probleme___setul_1
             if (nrp == 11)
             {
                 Console.WriteLine("Problema " + nrp);
+                p11();
             }
             if (nrp == 12)
             {
                 Console.WriteLine("Problema " + nrp);
+                p12();
             }
             if (nrp == 13)
             {
                 Console.WriteLine("Problema " + nrp);
+                p13();
             }
             if (nrp == 14)
             {
                 Console.WriteLine("Problema " + nrp);
+                p14();
             }
             if (nrp == 15)
             {
                 Console.WriteLine("Problema " + nrp);
+                p15();
             }
             if (nrp == 16)
             {
                 Console.WriteLine("Problema " + nrp);
+                p16();
             }
             if (nrp == 17)
             {
                 Console.WriteLine("Problema " + nrp);
+                p17();
             }
             if (nrp == 18)
             {
                 Console.WriteLine("Problema " + nrp);
+                p18();
             }
             if (nrp == 19)
             {
                 Console.WriteLine("Problema " + nrp);
+                p19();
             }
             if (nrp == 20)
             {
